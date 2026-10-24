@@ -1,0 +1,17 @@
+{
+  "name": "ShellCheck",
+  "version": "0.11.0",
+  "license": "GPL-3.0-or-later",
+  "repository": "https://github.com/koalaman/shellcheck",
+  "release": "https://github.com/koalaman/shellcheck/releases/tag/v0.11.0",
+  "binary": {
+    "url": "https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.zip",
+    "sha256": "8a4e35ab0b331c85d73567b12f2a444df187f483e5079ceffa6bda1faa2e740e"
+  },
+  "source": {
+    "url": "https://api.github.com/repos/koalaman/shellcheck/tarball/aac0823e6b58f8a499e856e93738082691cbf212",
+    "file": "source-v0.11.0.tar.gz",
+    "sha256": "2547927e1a6a8aae8d27521183bb2d6cface8b9852083cd7098c8ac3aedb278f",
+    "revision": "aac0823e6b58f8a499e856e93738082691cbf212"
+  }
+}

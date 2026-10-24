@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "dsh-fasttool",
+    "description": "只读文件检索、文件检查和 ShellCheck 脚本静态检查"
+  }
+}

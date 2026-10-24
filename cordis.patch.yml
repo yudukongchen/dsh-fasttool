@@ -1,0 +1,7 @@
+- insert:
+    - id: dsh-fasttool
+      name: dsh-fasttool
+      config:
+        promptPolicy: true
+        required: true
+        toolCallTimeoutMs: 300000

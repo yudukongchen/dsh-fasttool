@@ -1,0 +1,86 @@
+{
+  "name": "dsh-fasttool",
+  "version": "0.2.0",
+  "description": "Read-only FastCtx file tools and ShellCheck script diagnostics for DSH",
+  "type": "module",
+  "license": "MIT AND Apache-2.0 AND GPL-3.0-or-later",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "bin": {
+    "dsh-fasttool": "bin/dsh-fasttool.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "files": [
+    "lib",
+    "bin",
+    "scripts/build.mjs",
+    "scripts/check-package.mjs",
+    "native",
+    "runtime/Cargo.toml",
+    "runtime/Cargo.lock",
+    "runtime/build.rs",
+    "runtime/src",
+    "runtime/third-party",
+    "runtime/LICENSE-APACHE",
+    "runtime/NOTICE",
+    "runtime/THIRD_PARTY_LICENSES.md",
+    "runtime/THIRD_PARTY_LICENSES_RUST.md",
+    "runtime/UPSTREAM.json",
+    "dsh-plugin.json",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale",
+    "README.md",
+    "LICENSE",
+    "NOTICE",
+    "PROVENANCE.md",
+    "CHANGELOG.md",
+    "docs",
+    "scripts/build-shellcheck.mjs",
+    "vendor/shellcheck"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "status": "node bin/dsh-fasttool.mjs status",
+    "test": "node --test test/*.test.mjs",
+    "test:runtime": "node --test test/runtime.integration.mjs",
+    "test:host": "node --test test/host.integration.mjs",
+    "test:rust": "node scripts/test-rust.mjs",
+    "test:package": "node scripts/check-archive.mjs",
+    "validate": "node scripts/validate.mjs && node scripts/check-source.mjs",
+    "verify": "npm run validate && npm test && npm run test:runtime && npm run test:host && npm run test:rust",
+    "prepack": "node scripts/check-package.mjs",
+    "build:shellcheck": "node scripts/build-shellcheck.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.4",
+    "@deepseek-ai/dsh": "^0.2.0-rc.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "4.0.4",
+    "@deepseek-ai/dsh-scope": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.2",
+    "@deepseek-ai/dsh-system-prompt": "0.2.0-rc.2",
+    "@dsh-std/manifest": "0.1.1-rc.3",
+    "yaml": "^2.9.1"
+  },
+  "engines": {
+    "node": "^22.19 || >=24"
+  }
+}

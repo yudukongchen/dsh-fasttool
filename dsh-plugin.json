@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/T-Auto/dsh-std/8a15541117cb3c13ddb8f2468308691b6051d162/packages/manifest/schema/dsh-plugin-0.15.schema.json",
+  "manifestVersion": "0.15",
+  "id": "dsh-fasttool",
+  "name": "dsh-fasttool",
+  "version": "0.2.0",
+  "license": "MIT AND Apache-2.0 AND GPL-3.0-or-later",
+  "facets": {
+    "host": {
+      "entry": "lib/index.js",
+      "apiVersion": "v1alpha1"
+    }
+  },
+  "requires": {
+    "contracts": [
+      {
+        "apiVersion": "tools.dsh/v1alpha1",
+        "kind": "Tool"
+      }
+    ]
+  },
+  "permissions": [
+    {
+      "name": "dsh-fasttool.process.spawn",
+      "scope": "subprocess",
+      "reason": "Run the owned FastCtx read-only server and ShellCheck static analyzer without executing scripts."
+    },
+    {
+      "name": "dsh-fasttool.fs.read",
+      "scope": "filesystem-read",
+      "reason": "Search and inspect local files with the current user's filesystem access."
+    },
+    {
+      "name": "dsh-fasttool.fs.cache",
+      "scope": "filesystem-write",
+      "reason": "Create temporary search snapshots and extract the pinned PDF engine into its user cache."
+    }
+  ],
+  "contributes": {
+    "x-display": [
+      {
+        "icon": "./icon.svg",
+        "title": "dsh-fasttool",
+        "description": "Read-only FastCtx file tools and ShellCheck script diagnostics for DSH",
+        "locales": [
+          "locale/en.json",
+          "locale/zh.json"
+        ]
+      }
+    ],
+    "x-tool-namespaces": [
+      {
+        "serverName": "dsh-fasttool-runtime",
+        "transport": "stdio",
+        "source": "extracted local FastCtx source",
+        "tools": [
+          "fast-grep",
+          "fast-glob",
+          "fast_inspect_local_file"
+        ]
+      },
+      {
+        "serverName": "dsh-fasttool",
+        "transport": "in-process",
+        "source": "owned ShellCheck subprocess",
+        "tools": [
+          "fast-shellcheck"
+        ]
+      }
+    ],
+    "x-prompt-sections": [
+      {
+        "name": "dsh-fasttool:files",
+        "order": 3250,
+        "summary": "Read-only file tool routing, batching, and continuation instructions."
+      }
+    ]
+  },
+  "subscriptions": []
+}
